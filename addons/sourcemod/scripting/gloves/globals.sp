@@ -1,3 +1,5 @@
+// clang-format off
+
 /*  CS:GO Gloves SourceMod Plugin
  *
  *  Copyright (C) 2017 Kağan 'kgns' Üstüngel
@@ -14,7 +16,6 @@
  * You should have received a copy of the GNU General Public License along with 
  * this program. If not, see http://www.gnu.org/licenses/.
  */
-
 const int MAX_LANG = 40;
 
 Database db = null;
@@ -44,15 +45,22 @@ int g_iEnableWorldModel;
 int g_iGroup[MAXPLAYERS+1][4];
 int g_iGloves[MAXPLAYERS+1][4];
 float g_fFloatValue[MAXPLAYERS+1][4];
+int g_iSeed[MAXPLAYERS+1][4];
+int g_iSeedRandom[MAXPLAYERS+1][4];
 char g_CustomArms[MAXPLAYERS+1][4][256];
-int g_iTeam[MAXPLAYERS+1] = { 0, ... };
 Handle g_FloatTimer[MAXPLAYERS+1] = { INVALID_HANDLE, ... };
 int g_iSteam32[MAXPLAYERS+1] = { 0, ... };
 
+bool g_bWaitingForSeed[MAXPLAYERS+1] = { false, ... };
+bool g_bWaitingForWear[MAXPLAYERS+1] = { false, ... };
+
 char g_Language[MAX_LANG][32];
 int g_iClientLanguage[MAXPLAYERS+1];
-Menu menuGlovesGroup[MAX_LANG][4];
-Menu menuGloves[MAX_LANG][4][9];
 
+Menu menuGlovesGroup[MAX_LANG];
+Menu menuGloves[MAX_LANG][9];
+int g_iLastGlovesGroupPosition[MAXPLAYERS+1];
 StringMap g_smGlovesGroupIndex;
 StringMap g_smLanguageIndex;
+
+
